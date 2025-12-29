@@ -27,15 +27,47 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Clean potential conflicts
+      - name: Clean potential conflicts and recreate index.html
         run: |
           # Remove any potential conflicting files/directories
           rm -rf dist/ public/
-          # Ensure index.html is a file, not a directory
+          # Force remove index.html if it's a directory
           if [ -d "index.html" ]; then
-            echo "Found index.html directory, removing it"
+            echo "Found index.html directory, force removing it"
             rm -rf index.html
           fi
+          if [ -f "index.html" ]; then
+            echo "Found index.html file, removing it to recreate"
+            rm -f index.html
+          fi
+          # Recreate index.html as a proper file
+          cat > index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Build Your Own Clothing Brand in 90 Days | Rahul Sharma</title>
+              <meta name="description" content="Learn how to build your own clothing brand and sell from your website in just 90 days. Free orientation webinar by Rahul Sharma, IIM Ahmedabad Alumni." />
+              <meta name="author" content="Rahul Sharma" />
+
+              <meta property="og:title" content="Build Your Own Clothing Brand in 90 Days | Rahul Sharma" />
+              <meta property="og:description" content="Stop renting platforms. Start owning your brand. Learn the complete system to launch your website and scale to 6 figures." />
+              <meta property="og:type" content="website" />
+
+              <meta name="twitter:card" content="summary_large_image" />
+              <link rel="canonical" href="/" />
+            </head>
+
+            <body>
+              <div id="root"></div>
+              <script type="module" src="/src/main.tsx"></script>
+            </body>
+          </html>
+          EOF
+          # Verify it's a file
+          ls -la index.html
+          file index.html
 
       - name: Build
         run: bun run build
