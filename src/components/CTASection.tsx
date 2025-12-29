@@ -23,9 +23,9 @@ const CTASection = () => {
             </div>
           </div>
 
-          <a href="#register" className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-5 rounded-xl text-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-soft group">
+          <a href="#register" className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-5 rounded-xl text-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg ring-4 ring-primary/30 animate-pulse-subtle group">
             🚀 Join the Masterclass Now
-            <ArrowRight className="group-hover:translate-x-1 transition-transform h-[40px] w-[40px]" />
+            <ArrowRight className="group-hover:translate-x-1 transition-transform h-6 w-6" />
           </a>
 
           <p className="text-muted-foreground text-sm mt-6">

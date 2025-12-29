@@ -65,22 +65,22 @@ const HeroSection = () => {
 
           {/* Right - Info Cards */}
           <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
-              {infoCards.map((card, index) => <div key={index} className="bg-card rounded-xl p-5 shadow-card border border-border flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center shrink-0">
-                    <card.icon className="w-6 h-6 text-primary" />
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              {infoCards.map((card, index) => <div key={index} className="bg-card rounded-xl p-3 sm:p-5 shadow-card border border-border flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-4 text-center sm:text-left">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-secondary flex items-center justify-center shrink-0">
+                    <card.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="text-muted-foreground text-sm">{card.label}</p>
-                    <p className="font-bold text-foreground text-lg">{card.value}</p>
-                    {card.subtext && <p className="text-muted-foreground text-sm">{card.subtext}</p>}
+                    <p className="text-muted-foreground text-xs sm:text-sm">{card.label}</p>
+                    <p className="font-bold text-foreground text-sm sm:text-lg">{card.value}</p>
+                    {card.subtext && <p className="text-muted-foreground text-xs sm:text-sm">{card.subtext}</p>}
                   </div>
                 </div>)}
             </div>
 
             {/* CTA Button */}
-            <a href="#register" className="block w-full bg-primary hover:bg-primary/90 text-primary-foreground text-center py-5 rounded-xl font-bold text-xl transition-all duration-300 shadow-soft hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
-              Register Now At <span className="text-yellow-300">Rs. 99/-</span>
+            <a href="#register" className="block w-full bg-primary hover:bg-primary/90 text-primary-foreground text-center py-5 sm:py-6 rounded-xl font-bold text-lg sm:text-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] ring-4 ring-primary/30 animate-pulse-subtle">
+              🚀 Register Now At <span className="text-yellow-300 font-extrabold">Rs. 99/-</span>
             </a>
 
             {/* Guarantee */}

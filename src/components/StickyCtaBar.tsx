@@ -16,9 +16,9 @@ const StickyCtaBar = () => {
           
           <a
             href="#register"
-            className="inline-flex items-center gap-2 bg-card text-primary font-bold px-6 py-3 rounded-lg hover:bg-card/90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-card whitespace-nowrap"
+            className="inline-flex items-center gap-2 bg-card text-primary font-bold px-6 py-3 rounded-lg hover:bg-card/90 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg ring-2 ring-card/50 whitespace-nowrap"
           >
-            Register Now @ ₹99
+            🚀 Register Now @ ₹99
             <ArrowRight className="w-4 h-4" />
           </a>
         </div>
