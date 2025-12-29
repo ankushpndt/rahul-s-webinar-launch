@@ -33,9 +33,7 @@ const HeroSection = () => {
 
         {/* Main Headline */}
         <div className="text-center max-w-4xl mx-auto mb-12">
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-2">
-            Join 2-Hours Live Masterclass And
-          </h1>
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-2">Join 2-Hours Live Masterclass</h1>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
             <span className="text-primary underline-hand">Build your own brand in 90 days. Stop Renting, Start Owning.</span>
           </h2>
