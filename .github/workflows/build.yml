@@ -1,4 +1,4 @@
-name: Build & Deploy to Main Branch
+name: Build & Deploy to Public Folder
 
 on:
   push:
@@ -19,22 +19,29 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 18
-          cache: 'npm'
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install
+
+      - name: Clean potential conflicts
+        run: |
+          # Remove any potential conflicting files/directories
+          rm -rf dist/ public/
+          # Ensure index.html is a file, not a directory
+          if [ -d "index.html" ]; then
+            echo "Found index.html directory, removing it"
+            rm -rf index.html
+          fi
 
       - name: Build
-        run: npm run build
+        run: bun run build
 
       - name: Deploy to public folder
         run: |
-          # Remove old deployment folder if it exists
-          rm -rf public/
           # Create public folder and copy all built files there
           mkdir -p public
           cp -r dist/* public/
