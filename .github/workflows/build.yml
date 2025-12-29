@@ -5,8 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'assets/**'
-      - 'index.html'
+      - 'public/**'
 
 permissions:
   contents: write
@@ -32,17 +31,18 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Copy build files to root
+      - name: Deploy to public folder
         run: |
-          # Remove old built assets if they exist
-          rm -rf assets/
-          # Copy new built files to root
-          cp -r dist/* .
+          # Remove old deployment folder if it exists
+          rm -rf public/
+          # Create public folder and copy all built files there
+          mkdir -p public
+          cp -r dist/* public/
 
       - name: Commit and push built files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add assets/ index.html
-          git diff --staged --quiet || git commit -m "Deploy built assets [skip ci]"
+          git add public/
+          git diff --staged --quiet || git commit -m "Deploy to public/ folder [skip ci]"
           git push
